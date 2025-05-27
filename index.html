@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Una Propuesta Especial ❤</title>
+    <title>Para Ti, Mi mi niña</title>
     <style>
         * {
             margin: 0;
@@ -12,8 +12,8 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            font-family: 'Georgia', serif;
+            background: linear-gradient(-45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7, #fd79a8);
             background-size: 400% 400%;
             animation: gradientShift 15s ease infinite;
             min-height: 100vh;
@@ -21,269 +21,420 @@
         }
 
         @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
+            0%, 100% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
         }
 
-        .hearts {
-            position: fixed;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeInDown 2s ease;
+        }
+
+        .main-title {
+            font-size: 3.5rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: textGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes textGlow {
+            from { filter: drop-shadow(0 0 5px rgba(255,255,255,0.3)); }
+            to { filter: drop-shadow(0 0 20px rgba(255,255,255,0.8)); }
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: rgba(255,255,255,0.9);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .heart-container {
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 1;
+            z-index: -1;
         }
 
-        .heart {
+        .floating-heart {
             position: absolute;
-            color: rgba(255, 192, 203, 0.8);
-            font-size: 20px;
-            animation: float 6s ease-in-out infinite;
+            font-size: 2rem;
+            color: rgba(255, 107, 107, 0.7);
+            animation: floatHeart 8s linear infinite;
         }
 
-        @keyframes float {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
         }
 
-        .container {
-            position: relative;
-            z-index: 2;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .card {
+        .content-section {
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
             border-radius: 20px;
-            padding: 40px;
+            padding: 2.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            animation: slideIn 1.5s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .content-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            color: white;
             text-align: center;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            max-width: 500px;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .message-text {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.95);
+            text-align: center;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            margin-bottom: 2rem;
+        }
+
+        .memories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .memory-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .memory-card:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .memory-emoji {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .memory-title {
+            font-size: 1.3rem;
+            color: white;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .memory-text {
+            color: rgba(255,255,255,0.9);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .interactive-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            margin: 1rem;
+            cursor: pointer;
+            border: none;
+        }
+
+        .interactive-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            background: linear-gradient(45deg, #4ecdc4, #ff6b6b);
+        }
+
+        .surprise-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            transform: scale(0);
-            animation: popIn 1s ease-out 0.5s forwards;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
         }
 
-        @keyframes popIn {
-            0% { transform: scale(0) rotate(180deg); opacity: 0; }
-            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        .modal-content {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 500px;
+            margin: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: modalPop 0.5s ease;
         }
 
-        .title {
+        @keyframes modalPop {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+        }
+
+        .close-modal:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .love-counter {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .counter-display {
             font-size: 2.5rem;
             color: white;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
             animation: pulse 2s ease-in-out infinite;
         }
 
         @keyframes pulse {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+            50% { transform: scale(1.1); }
         }
 
-        .message {
-            font-size: 1.2rem;
-            color: white;
-            margin-bottom: 30px;
-            line-height: 1.6;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-        }
-
-        .random-phrase {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 15px;
-            border-radius: 10px;
-            margin: 20px 0;
-            font-style: italic;
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            margin: 30px 0;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 15px 30px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-yes {
-            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
-            color: white;
-            box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
-        }
-
-        .btn-no {
-            background: linear-gradient(45deg, #74b9ff, #0984e3);
-            color: white;
-            box-shadow: 0 10px 20px rgba(116, 185, 255, 0.3);
-        }
-
-        .btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .btn:hover::before {
-            left: 100%;
-        }
-
-        .celebration {
-            display: none;
-            text-align: center;
-            color: white;
-        }
-
-        .celebration.show {
-            display: block;
-            animation: celebrationPop 1s ease-out;
-        }
-
-        @keyframes celebrationPop {
-            0% { transform: scale(0); opacity: 0; }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        .whatsapp-btn {
-            background: linear-gradient(45deg, #25d366, #128c7e);
-            color: white;
-            margin-top: 20px;
-            animation: bounce 2s ease-in-out infinite;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
-        }
-
-        .image-container {
-            margin: 20px 0;
-            position: relative;
-        }
-
-        .romantic-image {
-            max-width: 200px;
-            border-radius: 50%;
-            border: 5px solid rgba(255, 255, 255, 0.3);
-            animation: rotate 10s linear infinite;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .sparkles {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-        }
-
-        .sparkle {
-            position: absolute;
-            color: gold;
-            animation: sparkle 2s ease-in-out infinite;
-        }
-
-        @keyframes sparkle {
-            0%, 100% { opacity: 0; transform: scale(0); }
-            50% { opacity: 1; transform: scale(1); }
-        }
-
-        @media (max-width: 600px) {
-            .card { padding: 20px; }
-            .title { font-size: 2rem; }
-            .message { font-size: 1rem; }
-            .buttons { flex-direction: column; align-items: center; }
-            .btn { width: 80%; }
+        @media (max-width: 768px) {
+            .main-title { font-size: 2.5rem; }
+            .content-section { padding: 1.5rem; margin: 1rem 0; }
+            .memories-grid { grid-template-columns: 1fr; }
+            .message-text { font-size: 1.1rem; }
         }
     </style>
 </head>
 <body>
-    <div class="hearts" id="hearts"></div>
-    <div class="sparkles" id="sparkles"></div>
+    <div class="heart-container" id="heartContainer"></div>
     
     <div class="container">
-        <div class="card" id="mainCard">
-            <div class="image-container">
-                <img src="https://images.unsplash.com/photo-1518568814500-bf0f8d125f46?w=300&h=300&fit=crop&crop=faces" alt="Corazón romántico" class="romantic-image" id="romanticImage">
-            </div>
-            
-            <h1 class="title">💕 Una Pregunta Especial 💕</h1>
-            
-            <div class="random-phrase" id="randomPhrase">
-                "El amor no se busca, se encuentra cuando menos lo esperas..."
-            </div>
-            
-            <p class="message" id="mainMessage">
-                Hemos compartido momentos increíbles juntos, y siento que tenemos una conexión muy bonita. 
-                Mi corazón late más fuerte cuando estás cerca, y no puedo imaginar mi vida sin ti.
+        <header class="header">
+            <h1 class="main-title">Para Ti, Mi Amor</h1>
+            <p class="subtitle">Una página especial para una persona especial</p>
+        </header>
+
+        <section class="content-section">
+            <h2 class="section-title">💝 Mensaje del Corazón</h2>
+            <p class="message-text">
+                Cada día contigo es una nueva aventura llena de amor, risas y momentos inolvidables. 
+                Eres la luz que ilumina mis días y la razón por la que sonrío cada mañana. 
+                Tu amor ha transformado mi mundo de maneras que nunca imaginé posibles.
             </p>
-            
-            <div class="buttons">
-                <button class="btn btn-yes" onclick="handleYes()">
-                    ¿Quieres ser mi novia? 💖
-                </button>
-                <button class="btn btn-no" onclick="handleNo()">
-                    ¿Puedo ser tu novio? 💝
-                </button>
+            <div class="love-counter">
+                <div class="counter-display" id="loveCounter">💕 0 latidos de amor</div>
             </div>
-        </div>
-        
-        <div class="card celebration" id="celebration">
-            <h1 class="title">🎉 ¡INCREÍBLE! 🎉</h1>
-            <p class="message">
-                ¡Has hecho que este sea el día más feliz de mi vida! 
-                Desde ahora voy a cuidarte, respetarte y darte todo lo bonito del mundo.
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title">🌟 Nuestros Momentos Especiales</h2>
+            <div class="memories-grid">
+                <div class="memory-card">
+                    <span class="memory-emoji">🌅</span>
+                    <h3 class="memory-title">Primer Encuentro</h3>
+                    <p class="memory-text">El momento en que nuestros ojos se cruzaron y supe que algo mágico había comenzado.</p>
+                </div>
+                <div class="memory-card">
+                    <span class="memory-emoji">🎭</span>
+                    <h3 class="memory-title">Risas Compartidas</h3>
+                    <p class="memory-text">Todas esas veces que reímos hasta llorar, creando recuerdos que atesoraré para siempre.</p>
+                </div>
+                <div class="memory-card">
+                    <span class="memory-emoji">🌙</span>
+                    <h3 class="memory-title">Noches Estrelladas</h3>
+                    <p class="memory-text">Contemplando el cielo juntos, soñando con nuestro futuro bajo las estrellas.</p>
+                </div>
+                <div class="memory-card">
+                    <span class="memory-emoji">💕</span>
+                    <h3 class="memory-title">Pequeños Detalles</h3>
+                    <p class="memory-text">Cada gesto, cada palabra dulce, cada momento de ternura que hace nuestro amor único.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title">🎁 Sorpresa Especial</h2>
+            <p class="message-text">Hay algo especial esperándote...</p>
+            <button class="interactive-button" onclick="showSurprise()">¡Descubre la Sorpresa!</button>
+            <button class="interactive-button" onclick="generateCompliment()">Mensaje Aleatorio de Amor</button>
+        </section>
+    </div>
+
+    <div class="surprise-modal" id="surpriseModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeSurprise()">&times;</span>
+            <h2 style="color: white; margin-bottom: 1rem;">💖 ¡Sorpresa!</h2>
+            <p style="color: white; font-size: 1.3rem; line-height: 1.6;" id="surpriseText">
+                ¡Eres la persona más increíble del mundo! Tu sonrisa ilumina mis días y tu amor llena mi corazón de felicidad infinita. 
+                Gracias por ser exactamente como eres. 💕
             </p>
-            <p class="message" style="font-size: 1.5rem; color: #FFD700;">
-                🌟 ¡Eres novia de Bagny Daniel! 🌟
-            </p>
-            <button class="btn whatsapp-btn" onclick="sendWhatsApp()">
-                📱 Enviar mensaje especial
-            </button>
         </div>
     </div>
 
-    
-    <script src="index.js"></script>
+    <script>
+        // Contador de amor
+        let loveCount = 0;
+        const loveCounter = document.getElementById('loveCounter');
+        
+        setInterval(() => {
+            loveCount++;
+            loveCounter.textContent = 💕 ${loveCount} latidos de amor;
+        }, 1000);
+
+        // Crear corazones flotantes
+        function createFloatingHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'floating-heart';
+            heart.innerHTML = '💖';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 3 + 5) + 's';
+            heart.style.fontSize = (Math.random() * 1.5 + 1) + 'rem';
+            
+            document.getElementById('heartContainer').appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 8000);
+        }
+
+        setInterval(createFloatingHeart, 2000);
+
+        // Mensajes de amor aleatorios
+        const loveMessages = [
+            "Eres mi sol en los días nublados ☀",
+            "Tu sonrisa es mi lugar favorito 😊",
+            "Contigo he descubierto el verdadero significado del amor 💕",
+            "Eres la melodía más hermosa de mi vida 🎵",
+            "Tu amor es el regalo más grande que he recibido 🎁",
+            "Cada día contigo es una nueva aventura 🌟",
+            "Eres mi hogar, sin importar dónde estemos 🏠",
+            "Tu felicidad es mi mayor motivación 💪",
+            "Eres más hermosa que todas las estrellas juntas ✨",
+            "Mi amor por ti crece cada segundo que pasa 💖"
+        ];
+
+        function generateCompliment() {
+            const randomMessage = loveMessages[Math.floor(Math.random() * loveMessages.length)];
+            document.getElementById('surpriseText').innerHTML = randomMessage;
+            document.getElementById('surpriseModal').style.display = 'flex';
+        }
+
+        function showSurprise() {
+            const surprises = [
+                "🌹 Eres la flor más hermosa en el jardín de mi vida",
+                "🎆 Tu amor ha llenado mi vida de colores que nunca había visto",
+                "🦋 Eres libre como una mariposa, y aún así elegiste quedarte conmigo",
+                "🌊 Tu amor es como el océano: profundo, infinito y lleno de misterios hermosos",
+                "⭐ Entre todas las estrellas del universo, tú brillas más que cualquier otra"
+            ];
+            
+            const randomSurprise = surprises[Math.floor(Math.random() * surprises.length)];
+            document.getElementById('surpriseText').innerHTML = randomSurprise;
+            document.getElementById('surpriseModal').style.display = 'flex';
+        }
+
+        function closeSurprise() {
+            document.getElementById('surpriseModal').style.display = 'none';
+        }
+
+        // Cerrar modal al hacer clic fuera
+        document.getElementById('surpriseModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeSurprise();
+            }
+        });
+
+        // Efectos de hover para las tarjetas
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.memory-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.05) rotate(2deg)';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1) rotate(0deg)';
+                });
+            });
+        });
+    </script>
 </body>
 </html>
